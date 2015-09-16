@@ -60,91 +60,95 @@ struct _ThriftTestHandler {
 struct _ThriftTestHandlerClass {
   TTestThriftTestHandlerClass parent;
 
-  gboolean (*test_void)            (TTestThriftTestIf    *iface,
-                                    GError              **error);
-  gboolean (*test_string)          (TTestThriftTestIf    *iface,
-                                    gchar               **_return,
-                                    const gchar          *thing,
-                                    GError              **error);
-  gboolean (*test_byte)            (TTestThriftTestIf    *iface,
+  gboolean (*test_void)            (TTestThriftTestIf       *iface,
+                                    GError                 **error);
+  gboolean (*test_string)          (TTestThriftTestIf       *iface,
+                                    gchar                  **_return,
+                                    const gchar             *thing,
+                                    GError                 **error);
+  gboolean (*test_byte)            (TTestThriftTestIf       *iface,
                                     gint8*_return,
-                                    const gint8           thing,
-                                    GError              **error);
-  gboolean (*test_i32)             (TTestThriftTestIf    *iface,
+                                    const gint8              thing,
+                                    GError                 **error);
+  gboolean (*test_i32)             (TTestThriftTestIf       *iface,
                                     gint32*_return,
-                                    const gint32          thing,
-                                    GError              **error);
-  gboolean (*test_i64)             (TTestThriftTestIf    *iface,
+                                    const gint32             thing,
+                                    GError                 **error);
+  gboolean (*test_i64)             (TTestThriftTestIf       *iface,
                                     gint64*_return,
-                                    const gint64          thing,
-                                    GError              **error);
-  gboolean (*test_double)          (TTestThriftTestIf    *iface,
+                                    const gint64             thing,
+                                    GError                 **error);
+  gboolean (*test_double)          (TTestThriftTestIf       *iface,
                                     gdouble*_return,
-                                    const gdouble         thing,
-                                    GError              **error);
-  gboolean (*test_struct)          (TTestThriftTestIf    *iface,
-                                    TTestXtruct         **_return,
-                                    const TTestXtruct    *thing,
-                                    GError              **error);
-  gboolean (*test_nest)            (TTestThriftTestIf    *iface,
-                                    TTestXtruct2        **_return,
-                                    const TTestXtruct2   *thing,
-                                    GError              **error);
-  gboolean (*test_map)             (TTestThriftTestIf    *iface,
-                                    GHashTable          **_return,
-                                    const GHashTable     *thing,
-                                    GError              **error);
-  gboolean (*test_string_map)      (TTestThriftTestIf    *iface,
-                                    GHashTable          **_return,
-                                    const GHashTable     *thing,
-                                    GError              **error);
-  gboolean (*test_set)             (TTestThriftTestIf    *iface,
-                                    GHashTable          **_return,
-                                    const GHashTable     *thing,
-                                    GError              **error);
-  gboolean (*test_list)            (TTestThriftTestIf    *iface,
-                                    GArray              **_return,
-                                    const GArray         *thing,
-                                    GError              **error);
-  gboolean (*test_enum)            (TTestThriftTestIf    *iface,
+                                    const gdouble            thing,
+                                    GError                 **error);
+  gboolean (*test_struct)          (TTestThriftTestIf       *iface,
+                                    TTestXtruct            **_return,
+                                    const TTestXtruct       *thing,
+                                    GError                 **error);
+  gboolean (*test_empty_struct)    (TTestThriftTestIf       *iface,
+                                    TTestEmptyStruct       **_return,
+                                    const TTestEmptyStruct  *thing,
+                                    GError                 **error);
+  gboolean (*test_nest)            (TTestThriftTestIf       *iface,
+                                    TTestXtruct2           **_return,
+                                    const TTestXtruct2      *thing,
+                                    GError                 **error);
+  gboolean (*test_map)             (TTestThriftTestIf       *iface,
+                                    GHashTable             **_return,
+                                    const GHashTable        *thing,
+                                    GError                 **error);
+  gboolean (*test_string_map)      (TTestThriftTestIf       *iface,
+                                    GHashTable             **_return,
+                                    const GHashTable        *thing,
+                                    GError                 **error);
+  gboolean (*test_set)             (TTestThriftTestIf       *iface,
+                                    GHashTable             **_return,
+                                    const GHashTable        *thing,
+                                    GError                 **error);
+  gboolean (*test_list)            (TTestThriftTestIf       *iface,
+                                    GArray                 **_return,
+                                    const GArray            *thing,
+                                    GError                 **error);
+  gboolean (*test_enum)            (TTestThriftTestIf       *iface,
                                     TTestNumberz*_return,
-                                    const TTestNumberz    thing,
-                                    GError              **error);
-  gboolean (*test_typedef)         (TTestThriftTestIf    *iface,
+                                    const TTestNumberz       thing,
+                                    GError                 **error);
+  gboolean (*test_typedef)         (TTestThriftTestIf       *iface,
                                     TTestUserId*_return,
-                                    const TTestUserId     thing,
-                                    GError              **error);
-  gboolean (*test_map_map)         (TTestThriftTestIf    *iface,
-                                    GHashTable          **_return,
-                                    const gint32          hello,
-                                    GError              **error);
-  gboolean (*test_insanity)        (TTestThriftTestIf    *iface,
-                                    GHashTable          **_return,
-                                    const TTestInsanity  *argument,
-                                    GError              **error);
-  gboolean (*test_multi)           (TTestThriftTestIf    *iface,
-                                    TTestXtruct         **_return,
-                                    const gint8           arg0,
-                                    const gint32          arg1,
-                                    const gint64          arg2,
-                                    const GHashTable     *arg3,
-                                    const TTestNumberz    arg4,
-                                    const TTestUserId     arg5,
-                                    GError              **error);
-  gboolean (*test_exception)       (TTestThriftTestIf    *iface,
-                                    const gchar          *arg,
-                                    TTestXception       **err1,
-                                    GError              **error);
-  gboolean (*test_multi_exception) (TTestThriftTestIf    *iface,
-                                    TTestXtruct         **_return,
-                                    const gchar          *arg0,
-                                    const gchar          *arg1,
-                                    TTestXception       **err1,
-                                    TTestXception2      **err2,
-                                    GError              **error);
-  gboolean (*test_oneway)          (TTestThriftTestIf    *iface,
-                                    const gint32          secondsToSleep,
-                                    GError              **error);
+                                    const TTestUserId        thing,
+                                    GError                 **error);
+  gboolean (*test_map_map)         (TTestThriftTestIf       *iface,
+                                    GHashTable             **_return,
+                                    const gint32             hello,
+                                    GError                 **error);
+  gboolean (*test_insanity)        (TTestThriftTestIf       *iface,
+                                    GHashTable             **_return,
+                                    const TTestInsanity     *argument,
+                                    GError                 **error);
+  gboolean (*test_multi)           (TTestThriftTestIf       *iface,
+                                    TTestXtruct            **_return,
+                                    const gint8              arg0,
+                                    const gint32             arg1,
+                                    const gint64             arg2,
+                                    const GHashTable        *arg3,
+                                    const TTestNumberz       arg4,
+                                    const TTestUserId        arg5,
+                                    GError                 **error);
+  gboolean (*test_exception)       (TTestThriftTestIf       *iface,
+                                    const gchar             *arg,
+                                    TTestXception          **err1,
+                                    GError                 **error);
+  gboolean (*test_multi_exception) (TTestThriftTestIf       *iface,
+                                    TTestXtruct            **_return,
+                                    const gchar             *arg0,
+                                    const gchar             *arg1,
+                                    TTestXception          **err1,
+                                    TTestXception2         **err2,
+                                    GError                 **error);
+  gboolean (*test_oneway)          (TTestThriftTestIf       *iface,
+                                    const gint32             secondsToSleep,
+                                    GError                 **error);
 };
 
 /* Used by THRIFT_TEST_HANDLER_GET_TYPE */
@@ -175,6 +179,10 @@ gboolean thrift_test_handler_test_double          (TTestThriftTestIf    *iface,
 gboolean thrift_test_handler_test_struct          (TTestThriftTestIf    *iface,
                                                    TTestXtruct         **_return,
                                                    const TTestXtruct    *thing,
+                                                   GError              **error);
+gboolean thrift_test_handler_test_empty_struct    (TTestThriftTestIf    *iface,
+                                                   TTestEmptyStruct    **_return,
+                                                   const TTestEmptyStruct *thing,
                                                    GError              **error);
 gboolean thrift_test_handler_test_nest            (TTestThriftTestIf    *iface,
                                                    TTestXtruct2        **_return,

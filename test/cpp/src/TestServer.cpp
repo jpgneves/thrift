@@ -114,6 +114,11 @@ public:
     out = thing;
   }
 
+  void testEmptyStruct(EmptyStruct& out, const EmptyStruct& thing) {
+    printf("testEmptyStruct()\n");
+    out = thing;
+  }
+
   void testNest(Xtruct2& out, const Xtruct2& nest) {
     const Xtruct& thing = nest.struct_thing;
     printf("testNest({%d, {\"%s\", %d, %d, %" PRId64 "}, %d})\n",
@@ -428,6 +433,12 @@ public:
   virtual void testStruct(tcxx::function<void(Xtruct const& _return)> cob, const Xtruct& thing) {
     Xtruct res;
     _delegate->testStruct(res, thing);
+    cob(res);
+  }
+
+  virtual void testEmptyStruct(tcxx::function<void(EmptyStruct const& _return)> cob, const EmptyStruct& thing) {
+    EmptyStruct res;
+    _delegate->testEmptyStruct(res, thing);
     cob(res);
   }
 

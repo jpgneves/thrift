@@ -175,6 +175,22 @@ thrift_test_handler_test_struct (TTestThriftTestIf  *iface,
 }
 
 gboolean
+thrift_test_handler_test_empty_struct (TTestThriftTestIf       *iface,
+                                       TTestEmptyStruct       **_return,
+                                       const TTestEmptyStruct  *thing,
+                                       GError                 **error)
+{
+
+  printf ("testEmptyStruct()\n");
+  g_object_get ((TTestEmptyStruct *)thing,
+                NULL);
+  g_object_set (*_return,
+                NULL);
+
+  return TRUE;
+}
+
+gboolean
 thrift_test_handler_test_nest (TTestThriftTestIf   *iface,
                                TTestXtruct2       **_return,
                                const TTestXtruct2  *thing,
